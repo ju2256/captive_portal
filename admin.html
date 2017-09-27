@@ -1,0 +1,118 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['login'])) {
+        header('Location: login.php'); 
+    } else {
+    	if(isset($_GET['action']) && $_GET['action'] == 'disconnect'){
+       	 	unset($_SESSION['login']);
+        	header('Location: login.php'); 
+    	}
+    }
+?>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Les OufsLAN: Etat des inscriptions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="app/css/admin.css" rel="stylesheet">
+    </head>
+    <body>   
+        <nav class="navbar navbar-default navbar-fixed-top">
+              <div class="container-fluid">
+                <div class="navbar-header" style="padding-top: 6px;">
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default" id="disconnect"><span class="glyphicon glyphicon-off"></span> Deconnexion</button>
+                      <button type="button" class="btn btn-default" id="excel"><span class="glyphicon glyphicon-list-alt"></span> Excel</button>
+                      <button type="button" class="btn btn-default" id="inscription"><span class="glyphicon glyphicon-pencil"></span> Inscription</button>
+                      <button type="button" class="btn btn-default" id="phpmyadmin"><span class="glyphicon glyphicon-user"></span> phpmyadmin</button>
+                      <button type="button" class="btn btn-default" id="reset"><span class="glyphicon glyphicon-refresh"></span> Synchro [www.oufs-lan.org]</button>
+                    </div>
+                    <span id="stats"></span>
+                    <span class="glyphicon glyphicon-repeat" id="working"></span>
+                </div>
+              </div>
+            </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="table-responsive">
+                    <table id="tJoueurs" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="pseudo">Pseudo</th>
+                                <th class="statut">Statut</th>
+                                <th class="mac">Mac</th>
+                                <th class="paiement"><span class="glyphicon glyphicon-piggy-bank"></span>  Paiement</th>
+                                <th class="etat"><span class="glyphicon glyphicon-thumbs-up"></span></th>
+                                <th class="actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="content">
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div>
+        
+        <div id="razModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Attention</h4>
+              </div>
+              <div class="modal-body">
+                <p>Vider le contenu de la base et récupérer les inscrits depuis le site internet des Oufs ?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default confirm" data-dismiss="modal">Confirmer</button>
+                <button type="button" class="btn btn-primary deny">Annuler</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="adherentModal" class="modal fade bs-example-modal-lg">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Liste des adhérents</h4>
+              </div>
+              <div class="modal-body table-responsive">
+                  <table id="adherent-table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Pseudo</th>
+                            <th>Année</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-body-content">
+                      
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="text" id="adherentModalPseudo"></td>
+                            <td><input type="text" id="adherentModalAnnee" value="2015"></td>
+                            <td><button type="button" id="btn-add" class="btn btn-success btn-xs">+</button></td>
+                        </tr>
+                    </tfoot>
+                  </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default confirm" data-dismiss="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <script src="lib/jquery/jquery-1.11.2.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="app/js/admin.js"></script>
+        <script src="app/js/models/joueur.js"></script>
+        <script src="app/js/models/adherent.js"></script>
+    </body>
+</html>

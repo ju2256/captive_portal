@@ -1,0 +1,5 @@
+AddType application/x-httpd-php .php
+
+AddType application/x-httpd-php .htm
+
+AddType application/x-httpd-php .html

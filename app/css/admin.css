@@ -1,0 +1,84 @@
+body { 
+    padding-top: 53px;
+    padding-left: 14px;
+}
+table tr td{
+    font-size: 12px;
+}
+
+.pseudo{
+    width: auto;   
+}
+.statut{
+    width: 100px;   
+}
+.etat-ok{
+    background-color: rgb(87, 165, 16);
+    box-shadow: inset 0px 0px 29px -1px rgba(252,252,252,0.58);
+	height: 15px;
+}
+.etat-ko{
+    background-color: rgb(218, 150, 150);
+    box-shadow: inset 0px 0px 29px -1px rgba(252,252,252,0.58);
+	height: 15px;
+}
+.mac{
+    width: 111px;   
+}
+.paiement{
+    width: 130px;
+}
+.etat{
+    width: 15px;
+	height: 15px;
+    text-align: center;
+}
+.etat[type="checkbox"]{
+    width: 80%;
+    height: 80%;
+}
+span{
+    color: #4D4D4D;
+}
+#tJoueurs{
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar{
+    background: #242424;
+    background-image: url(../../img/background.png);
+    background-repeat: repeat;   
+}
+#tJoueurs td:last-child {
+    border: none;   
+}
+#tJoueurs th{
+    border: none;
+    padding-left: 10px;
+}
+#working{
+    color: white;
+    position: fixed;
+    right: 5px;
+    top: 12px;
+    height: 38px;
+    width: 20px;
+    font-size: 20px;
+}
+.btn-action{
+    height: 25px;
+    width: 25px;
+    line-height: 1px;
+    font-weight: bold;
+}
+#stats{
+    color: #ffffff;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    padding-left: 3px;
+    padding-right: 3px;
+}

@@ -1,0 +1,17 @@
+vue radcheck
+-------------
+DROP VIEW radcheck;
+CREATE VIEW radcheck AS
+SELECT id AS id, mac as username, 'Password' as attribute, '=' as op, 'oufslan' as value 
+FROM users 
+WHERE etat = 1 
+AND mac <>  '';
+
+vue radusergroup
+----------------
+DROP VIEW radusergroup;
+CREATE VIEW radusergroup AS
+SELECT id AS id, mac as username, 'oufslan' as groupname, 1 as priority 
+FROM users 
+WHERE etat = 1 
+AND mac <>  '';
